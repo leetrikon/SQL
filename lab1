@@ -1,0 +1,125 @@
+#CREATE DATABASE test;
+#USE test;
+
+#DROP TABLE S;
+#DROP TABLE P;
+#DROP TABLE J;
+#DROP TABLE SPJ;
+
+CREATE TABLE S (nom_post VARCHAR(6) NOT null UNIQUE, surname VARCHAR(20),rating INT, city VARCHAR(20));
+
+INSERT INTO S (nom_post, surname, rating, city)
+values ('S1', 'Smith', 20, 'London');
+INSERT INTO S (nom_post, surname, rating, city)
+VALUES ('S2', 'Johns', 10, 'Paris');
+INSERT INTO S (nom_post, surname, rating, city)
+VALUES ('S3', 'Blake', 30, 'Paris');
+INSERT INTO S (nom_post, surname, rating, city)
+VALUES ('S4', 'Clark', 20, 'London');
+INSERT INTO S (nom_post, surname, rating, city)
+VALUES ('S5', 'Adams', 30, 'Afiny');
+
+CREATE TABLE P (nom_det VARCHAR(6) NOT null UNIQUE, name VARCHAR(20), color VARCHAR(20), weight INT, city VARCHAR(20));
+
+INSERT INTO P (nom_det, name, color, weight, city)
+values ('P1', 'Gaika', 'Red', 12, 'London');
+INSERT INTO P (nom_det, name, color, weight, city)
+values ('P2', 'Bolt', 'Green', 17, 'Paris');
+INSERT INTO P (nom_det, name, color, weight, city)
+values ('P3', 'Vint', 'Blue', 17, 'Rome');
+INSERT INTO P (nom_det, name, color, weight, city)
+values ('P4', 'Vint', 'Red', 14, 'London');
+INSERT INTO P (nom_det, name, color, weight, city)
+values ('P5', 'Culachok', 'Blue', 12, 'Paris');
+INSERT INTO P (nom_det, name, color, weight, city)
+values ('P6', 'Blum', 'Red', 19, 'London');
+
+CREATE TABLE J (nom_izd VARCHAR(6) NOT null UNIQUE, name VARCHAR(20), city VARCHAR(20));
+
+INSERT INTO J (nom_izd, name, city)
+values ('J1', 'Hard Drive', 'Paris');
+INSERT INTO J (nom_izd, name, city)
+values ('J2', 'Perforator', 'Rome');
+INSERT INTO J (nom_izd, name, city)
+values ('J3', 'Schitivatel',  'Anthem');
+INSERT INTO J (nom_izd, name, city)
+values ('J4', 'Printer', 'Anthem');
+INSERT INTO J (nom_izd, name, city)
+values ('J5', 'Floppy-drive', 'London');
+INSERT INTO J (nom_izd, name, city)
+values ('J6', 'Terminal', 'Oslo');
+INSERT INTO J (nom_izd, name, city)
+values ('J7', 'Lenta', 'London');
+
+CREATE TABLE SPJ (nom_post VARCHAR(6), nom_det VARCHAR(20), nom_izd VARCHAR(20), quantity int);
+
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S1', 'P1', 'J1', 200);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S1', 'P1', 'J4', 700);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S2', 'P3', 'J1', 400);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S2', 'P3', 'J2', 200);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S2', 'P3', 'J3', 200);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S2', 'P3', 'J4', 500);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S2', 'P3', 'J5', 600);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S2', 'P3', 'J6', 400);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S2', 'P3', 'J7', 800);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S2', 'P5', 'J2', 100);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S3', 'P3', 'J1', 200);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S3', 'P4', 'J2', 500);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S4', 'P6', 'J3', 300);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S4', 'P6', 'J7', 300);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P2', 'J2', 200);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P2', 'J4', 100);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P5', 'J5', 500);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P5', 'J7', 100);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P6', 'J2', 200);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P1', 'J4', 100);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P3', 'J4', 200);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P4', 'J4', 800);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P5', 'J4', 400);
+INSERT INTO SPJ (nom_post, nom_det, nom_izd, quantity)
+values ('S5', 'P6', 'J4', 500);
+
+alter table SPJ 
+ADD post_date date;
+
+UPDATE SPJ
+SET post_date=20021111
+where nom_det = 'P1';
+UPDATE SPJ
+SET post_date=20181111
+where nom_det = 'P2';
+UPDATE SPJ
+SET post_date=20100510
+where nom_det = 'P3';
+UPDATE SPJ
+SET post_date=20070607
+where nom_det = 'P4';
+UPDATE SPJ
+SET post_date=20060909
+where nom_det = 'P5';
+UPDATE SPJ
+SET post_date=20031212
+where nom_det = 'P6';
