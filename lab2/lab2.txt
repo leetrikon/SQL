@@ -1,46 +1,5 @@
-#DROP TABLE demo;
+DROP TABLE demo;
 
-CREATE TABLE Service (
-  ID int NOT NULL AUTO_INCREMENT,
-  ManagerID int,
-  CustomerID INT,
-  HaircutID INT,
-  TimeRecieved DATETIME,
-  TimeCompleted DATETIME,
-  BillID INT,
-  PRIMARY KEY (ID),
-  FOREIGN KEY (ManagerId) REFERENCES Manager (ID),
-  FOREIGN KEY (CustomerID) REFERENCES Customer (ID),
-  FOREIGN KEY (HaircutID) REFERENCES Haircut (ID),
-  FOREIGN KEY (BillID) REFERENCES Bill (ID));
-  
-CREATE TABLE Manager (
-  ID int NOT NULL AUTO_INCREMENT,
-  FullName varchar(100),
-  PhoneNumber varchar(20),
-  BranchID INT,
-  Salary FLOAT,
-  PRIMARY KEY (ID),
-  FOREIGN KEY (BranchID) REFERENCES Branch (ID));
-  
-CREATE TABLE Branch (
-  ID int NOT NULL AUTO_INCREMENT,
-  City varchar(100),
-  Address varchar(100),
-  PhoneNumber VARCHAR(20),
-  ManagerID INT,
-  PRIMARY KEY (ID),
-  FOREIGN KEY (ManagerID) REFERENCES Manager (ID));
-  
-CREATE TABLE Haircut (
-  ID int NOT NULL AUTO_INCREMENT,
-  Gender Varchar(2),
-  Name varchar(100),
-  Price VARCHAR(20),
-  BarberID INT,
-  PRIMARY KEY (ID),
-  FOREIGN KEY (BarberID) REFERENCES Barber (ID));
-  
 CREATE TABLE Customer (
   ID int NOT NULL AUTO_INCREMENT,
   FullName varchar(100),
@@ -58,6 +17,32 @@ CREATE TABLE Barber (
   Salary FLOAT,
   PRIMARY KEY (ID));
   
+  CREATE TABLE Haircut (
+  ID int NOT NULL AUTO_INCREMENT,
+  Gender Varchar(2),
+  Name varchar(100),
+  Price VARCHAR(20),
+  BarberID INT,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (BarberID) REFERENCES Barber (ID));
+    
+CREATE TABLE Branch (
+  ID int NOT NULL AUTO_INCREMENT,
+  City varchar(100),
+  Address varchar(100),
+  PhoneNumber VARCHAR(20),
+  ManagerID INT,
+  PRIMARY KEY (ID));
+  
+CREATE TABLE Manager (
+  ID int NOT NULL AUTO_INCREMENT,
+  FullName varchar(100),
+  PhoneNumber varchar(20),
+  BranchID INT,
+  Salary FLOAT,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (BranchID) REFERENCES Branch (ID));
+  
 CREATE TABLE Bill (
   ID int NOT NULL AUTO_INCREMENT,
   Discount FLOAT,
@@ -68,3 +53,17 @@ CREATE TABLE Bill (
   Total float,
   PRIMARY KEY (ID),
   FOREIGN KEY (ManagerID) REFERENCES Manager (ID));
+  
+CREATE TABLE Service (
+  ID int NOT NULL AUTO_INCREMENT,
+  ManagerID int,
+  CustomerID INT,
+  HaircutID INT,
+  TimeRecieved DATETIME,
+  TimeCompleted DATETIME,
+  BillID INT,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (ManagerId) REFERENCES Manager (ID),
+  FOREIGN KEY (CustomerID) REFERENCES Customer (ID),
+  FOREIGN KEY (HaircutID) REFERENCES Haircut (ID),
+  FOREIGN KEY (BillID) REFERENCES Bill (ID));
