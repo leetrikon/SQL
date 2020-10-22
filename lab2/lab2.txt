@@ -40,8 +40,7 @@ CREATE TABLE Manager (
   PhoneNumber varchar(20),
   BranchID INT,
   Salary FLOAT,
-  PRIMARY KEY (ID),
-  FOREIGN KEY (BranchID) REFERENCES Branch (ID));
+  PRIMARY KEY (ID));
   
 CREATE TABLE Bill (
   ID int NOT NULL AUTO_INCREMENT,
